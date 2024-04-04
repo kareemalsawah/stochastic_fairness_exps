@@ -43,7 +43,7 @@ def is_ef1(vals: np.array, alloc: np.array) -> bool:
     return True
 
 
-def prob_ef1(
+def prob_ef1_cost(
     agent_means: np.array, agent_stds: np.array, alloc: np.array, n_samples: int = 1000
 ) -> float:
     """
@@ -75,7 +75,9 @@ def prob_ef1(
     return count_ef / n_samples
 
 
-def alpha_ef1(agent_means: np.array, agent_stds: np.array, alloc: np.array) -> float:
+def alpha_ef1_cost(
+    agent_means: np.array, agent_stds: np.array, alloc: np.array
+) -> float:
     """
     For a given allocation, find the largest alpha such that
     E[vi(Ai)] >= min over g (E[vi(Aj\{g})]) + alpha, for all i,j
