@@ -86,10 +86,32 @@ def abs_means(
             agent_means + np.random.normal(0, 1, (agent_means.shape)) * agent_stds
         )
         all_evals.append(sample)
-    return np.mean(all_evals, axis=0), np.std(all_evals, axis=0)
+    return np.mean(all_evals, axis=0)
 
 
-def prob_abs_gaussian_larger(mean1, var1, mean2, var2, n_samples: int = 1000):
+def prob_abs_gaussian_larger(mean1, var1, mean2, var2, n_samples: int = 1000) -> float:
+    """
+    Given two gaussian distributions (mean and variance for each)
+    Evalute the prob that the absolute value of the first >= absolute the second
+
+    Parameters
+    ----------
+    mean1 : float or np.array
+        Mean of first gaussian
+    var1 : float or np.array
+        Variance of the first gaussian
+    mean2 : loat or np.array
+        Mean of the second gaussian
+    var2 : loat or np.array
+        Variance of the second gaussian
+    n_samples : int, by default 1000
+        Number of realizations to evaluate
+
+    Returns
+    -------
+    float
+        The prob of the event described above
+    """
     mean1, mean2 = np.array(mean1), np.array(mean2)
     var1, var2 = np.array(var1), np.array(var2)
     count = 0

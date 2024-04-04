@@ -96,7 +96,7 @@ def alpha_ef1(agent_means: np.array, agent_stds: np.array, alloc: np.array) -> f
             E[vi(Ai)] >= min over g (E[vi(Aj\{g})]) + alpha
         If alpha < 0, then this allocation is not EF1 (in the deterministic sense)
     """
-    means, _ = abs_means(agent_means, agent_stds)
+    means = abs_means(agent_means, agent_stds)
     n_agents, _ = means.shape
     min_alpha = np.inf
 
